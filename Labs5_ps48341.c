@@ -1,6 +1,16 @@
 #include <stdio.h>
 #include <math.h>
 
+void nhapSoNguyen(int *x)
+{
+    printf("Nhập số nguyên: ");
+    scanf("%d", x);
+}
+void nhapSoThapPhan(float *x)
+{
+    printf("Nhấp số thập phân: ");
+    scanf("%f", x);
+}
 int laSoNguyen(float x)
 {
     int nguyen = (int)x;
@@ -15,13 +25,11 @@ int laSoNguyen(float x)
 }
 int laSoCP(float x)
 {
-    if(x <0){
-        return 0;
-    }else{
-        int can = (int)sqrt(x);
-        if(can * can == (int)x){
-            return 1;
-        }
+    int n = (int)x;
+    if(x<0) return 0;
+    for(int i = 1; i * i <= n; i++)
+    {
+        if(i * i == n) return 1;
     }
     return 0;
 }
@@ -47,7 +55,7 @@ int main()
     float so_thuc;
 
     nhapSoNguyen(&so_nguyen);
-    nhapSoThuc(&so_thuc);
+    nhapSoThapPhan(&so_thuc);
 
     printf("Gia tri cua so nguyen la: %d\n", so_nguyen);
     printf("Gia tri cua so thuc la: %.2f\n", so_thuc);
@@ -63,8 +71,8 @@ int main()
     printf("Kiểm tra số chính phương.\n");
     if(laSoCP(so_nguyen)==0) printf("%d không phải là số chính phương.\n", so_nguyen);
     else printf("%d là số chính phương.\n", so_nguyen);
-    if(laSoNguyen(so_thuc)==0) printf("%.2f là số chính phương.\n", so_thuc);
-    else printf("%.2f là số chính phương.\n", so_thuc);
+    if(laSoCP(so_thuc)==1) printf("%.2f là số chính phương.\n", so_thuc);
+    else printf("%.2f không phải là số chính phương.\n", so_thuc);
 
     printf("____________________\n");
     printf("Kiểm tra số nguyên tố.\n");
