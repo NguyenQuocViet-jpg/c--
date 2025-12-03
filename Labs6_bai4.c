@@ -22,7 +22,7 @@ int main()
     {
         for(int l = 0; l < m; l++)
         {
-            printf("Bình pương phần nguyen[%d][%d] trong mảng: %d\n", k, l, nguyen[k][l] * nguyen[k][l]);
+            printf("Bình phương phần tử nguyen[%d][%d] trong mảng: %d\n", k, l, nguyen[k][l] * nguyen[k][l]);
         }
     }
 
