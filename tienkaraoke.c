@@ -2,32 +2,25 @@
 
 int main()
 {
-    int gio_vao, gio_ra;
-    printf("Giờ vào là: ");
-    scanf("%d", &gio_vao);
-    printf("Giờ ra là: ");
-    scanf("%d", &gio_ra);
 
-    if(gio_vao >= 12 && gio_ra <= 23 && gio_ra > gio_vao)
-    {
-        int tieng = gio_ra - gio_vao;
-        int gia_tien = 150000;
-        float gio_vang;
+    int gio_vao, gio_ra, tg;
+    float tienhat;
 
-        if(tieng >=4)
-        {
-            gia_tien = gia_tien * 0.7;
-        }
-        
-        if(gio_vao >= 14 && gio_vao <= 17)
-        {
-            gio_vang = 0.9;
-        }else gio_vang = 1;
+    do{
+        printf("Giờ vào là: ");
+        scanf("%d", &gio_vao);
+        printf("Giờ ra là: ");
+        scanf("%d", &gio_ra);
+    }while(gio_vao < 12 ||  gio_vao >= 23 || gio_ra <= 12 || gio_ra >= 23 || gio_ra < gio_vao);
 
-        float tong_tien = tieng * gia_tien * gio_vang;
-        printf("Tổng số tiên phải trả là: %f", tong_tien);
-    }
-    else printf("Giờ này quán không hoạt động.\n");
+    tg = gio_ra - gio_vao;
+    
+    if(tg <= 3 ) tienhat = 150000;
+    else tienhat = 150000 + ((tg - 3) * 50000 * 0.7);
+
+    if(gio_vao >= 14 && gio_vao <= 17) tienhat *= 0.9; 
+
+    printf("Tổng tiền phải trả là: %f", tienhat);
 
     return 0;
 }

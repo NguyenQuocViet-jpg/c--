@@ -28,8 +28,6 @@ int elementOddArray(int x[10], int n)
             cout++;
         }
     }
-    printf("%d\n", cout);
-
     return cout;
 }
 int elementEvenArray(int x[10], int n)
@@ -43,7 +41,6 @@ int elementEvenArray(int x[10], int n)
             cout++;
         }
     }
-    printf("%d\n", cout);
     return cout;
 }
 int elementOddTotalArray(int x[10], int n)
@@ -57,12 +54,20 @@ int elementOddTotalArray(int x[10], int n)
             tong += x[i];
         }
     }
-    printf(" %d\n", tong);
     return tong;
 }
 int elementEvenTotalArray(int x[10], int n)
 {
-    
+    int i;
+    int tong = 0;
+    for(i = 0; i < n; i++)
+    {
+        if(x[i] % 2 == 0)
+        {
+            tong += x[i];
+        }
+    }
+    return tong;
 }
 int main()
 {
@@ -75,14 +80,19 @@ int main()
     printf("Mảng vừa nhập:\n");
     outputArray(a, size);
 
-    printf("Số phần tử lẻ trong mảng: ");
-    elementOddArray(a, size);
+    printf("Số phần tử lẻ trong mảng: %d\n", elementOddArray(a, size));
 
-    printf("Số phần tử lẻ trong mảng: ");
-    elementEvenArray(a, size);
+    printf("Số phần tử chẵn trong mảng: %d\n", elementEvenArray(a, size));
 
-    printf("Tổng các phần tử lẻ: ");
-    elementOddTotalArray(a, size);
+    printf("Tổng các phần tử lẻ: %d\n", elementOddTotalArray(a, size));
+
+    printf("Tổng các phần tử chăn: %d\n", elementEvenTotalArray(a, size));
+
+    printf("Các phần tử chia hết cho 3: ");
+    for(int i = 0; i < size; i ++)
+    {
+        if(a[i] % 3 == 0) printf("\ta[%d]: %d\t", i, a[i]);
+    }
 
     return 0;
 }

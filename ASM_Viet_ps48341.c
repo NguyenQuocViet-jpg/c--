@@ -41,32 +41,24 @@ int soNT(float x)
 }
 void karaoke()
 {
-    int gio_vao, gio_ra;
-    printf("Giờ vào là: ");
-    scanf("%d", &gio_vao);
-    printf("Giờ ra là: ");
-    scanf("%d", &gio_ra);
+    int gio_vao, gio_ra, tg;
+    float tienhat;
 
-    if(gio_vao >= 12 && gio_ra <= 23 && gio_ra > gio_vao)
-    {
-        int tieng = gio_ra - gio_vao;
-        int gia_tien = 150000;
-        float gio_vang;
+    do{
+        printf("Giờ vào là: ");
+        scanf("%d", &gio_vao);
+        printf("Giờ ra là: ");
+        scanf("%d", &gio_ra);
+    }while(gio_vao < 12 ||  gio_vao >= 23 || gio_ra <= 12 || gio_ra >= 23 || gio_ra < gio_vao);
 
-        if(tieng >=4)
-        {
-            gia_tien = gia_tien * 0.7;
-        }
-        
-        if(gio_vao >= 14 && gio_vao <= 17)
-        {
-            gio_vang = 0.9;
-        }else gio_vang = 1;
+    tg = gio_ra - gio_vao;
+    
+    if(tg <= 3 ) tienhat = 150000;
+    else tienhat = 150000 + ((tg - 3) * 50000 * 0.7);
 
-        float tong_tien = tieng * gia_tien * gio_vang;
-        printf("Tổng số tiên phải trả là: %f\n", tong_tien);
-    }
-    else printf("Giờ này quán không hoạt động.\n");
+    if(gio_vao >= 14 && gio_vao <= 17) tienhat *= 0.9; 
+
+    printf("Tổng tiền phải trả là: %f", tienhat);
 }
 void tinhTienDien()
 {
@@ -108,6 +100,7 @@ void laiXuatNganHang()
     scanf("%lld", &tien_vay);
     du_no = tien_vay;
 
+    printf("Kỳ hạn  |  Lãi phải trả  |  Gốc phải trả  | Số tiền phải trả  |  Số tiền còn lại  |\n");
     for(int thang = 1; thang <= ky_han; thang++)
     {
         long long lai_thang = (long long int)(du_no * lai);
@@ -117,9 +110,11 @@ void laiXuatNganHang()
         tong_tra += tra_thang;
 
         du_no -= goc_thang;
+
+        printf("%4d    | %13lld     | %11lld     | %11lld     | %15lld       |\n", thang, lai_thang, goc_thang, tra_thang, du_no);   
     }
-    printf("Tổng lãi: %lld\n", tong_lai);
-    printf("Tổng số tiền cần phải tra trong 12 tháng: %lld", tong_tra);
+    printf("Tổng lãi: %72lld\n", tong_lai);
+    printf("Tổng số tiền cần phải tra trong 12 tháng: %40lld", tong_tra);
 }
 int USCLN(int a, int b)
 {

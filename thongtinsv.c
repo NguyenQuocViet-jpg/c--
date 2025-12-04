@@ -1,40 +1,80 @@
 #include <stdio.h>
+#include <string.h>
 
 int main()
 {
-    char ten[100];
+    int n;
+    printf("Số lượng sinh viên muốn nhập: ");
+    scanf("%d", &n);
+    getchar();
 
-    printf("Vui lòng nhập tên của bạn: ");
-    
-    fgets(ten, sizeof(ten), stdin);
+    char ten[n][50];
+    float diem[n];
 
-    float Diem;
-    printf("Nhập điểm của bạn : ");
-    scanf("%f", & Diem);
+    for(int i = 0; i < n; i++)
+    {
+        printf("Nhap ten %d:", i +1);
+        scanf("%s", &ten[i]);
+        
+        printf("Nhap diem %d: ", i + 1);
+        scanf("%f", &diem[i]);
+    }
 
-    printf("-----------------------\n");
-    printf("Thông tin sinh viên: \n");
-    printf("Họ và tên: %s", ten);
-    printf("Học lực: ");
+    char temp[50];
+    float doi = 0;
+    for(int i = 0; i < n; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            if(diem[j] < diem[i])
+            {
+                doi = diem[i];
+                diem[i] = diem[j];
+                diem[j] = doi;
 
-    if(Diem >= 9)
+                strcpy(temp, ten[i]);
+                strcpy(ten[i], ten[j]);
+                strcpy(ten[j], temp);
+            }
+        }
+    }
+
+    char xl[n][50];
+    for(int i = 0; i < n; i++)
     {
-        printf(" xuất sắc");
-    }else if(Diem < 9 && Diem >= 8)
+        if(diem[i] >= 9)
+        {
+            //printf(" xuất sắc");
+            strcpy(xl[i], "Học lực xuất sắc");
+        }else if(diem[i] < 9 && diem[i] >= 8)
+        {
+            //printf(" giỏi");
+            strcpy(xl[i], "Học lực giỏi");
+        }else if(diem[i] < 8 && diem[i] >= 6.5)
+        {
+            //printf(" khá");
+            strcpy(xl[i], "Học lực khá");
+        }else if(diem[i] < 6.5 && diem[i] >= 5)
+        {
+            //printf(" trung bình");
+            strcpy(xl[i], "Học lực trung bình");
+        }else if(diem[i] < 5 && diem[i] >= 3.5)
+        {
+            //printf(" yếu");
+            strcpy(xl[i], "Học lực yếu");
+        }else if(diem[i] < 3.5)
+        {
+            //printf(" kém");
+            strcpy(xl[i], "Học lực kém");
+        }
+    }
+
+    printf(" %-5s | %-20s | %-6s | %-25s\n", "STT", "Tên", "Điểm", "Xếp loại");
+    printf("--------------------------------------------------------------\n");
+    for(int i = 0; i < n; i++)
     {
-        printf(" giỏi");
-    }else if(Diem < 8 && Diem >= 6.5)
-    {
-        printf(" khá");
-    }else if(Diem < 6.5 && Diem >= 5)
-    {
-        printf(" trung bình");
-    }else if(Diem < 5 && Diem >= 3.5)
-    {
-        printf(" yếu");
-    }else if(Diem < 3.5)
-    {
-        printf(" kém");
+        printf(" %-5d | %-20s | %-6.2f | %-25s\n", i + 1, ten[i], diem[i], xl[i]);
+
     }
 
     return 0;
