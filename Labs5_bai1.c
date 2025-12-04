@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int so_lon_nhat()
+void  so_lon_nhat()
 {
     float so_1, so_2, so_3;
 
@@ -16,7 +16,7 @@ int so_lon_nhat()
      
      printf("Giá trị lớn nhất là: %f", max);
 
-     return max;
+    // return max;
 }
 int main()
 {
