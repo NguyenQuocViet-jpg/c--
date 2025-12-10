@@ -8,20 +8,30 @@ int main()
     scanf("%d", &n);
     getchar();
 
-    char ten[n][50];
+    char ten[n][100];
     float diem[n];
+    char mssv [n][20];
 
     for(int i = 0; i < n; i++)
     {
+        printf("------------------\n");
+
+        printf("Nhập MSSV %d: ", i + 1);
+        fgets(mssv[i], sizeof(mssv), stdin);
+        mssv[i][strcspn(mssv[i], "\n")] = '\0';
+
         printf("Nhap ten %d:", i +1);
-        scanf("%s", &ten[i]);
+        fgets(ten[i], sizeof(ten), stdin);
+        ten[i][strcspn(ten[i], "\n")] = '\0';
         
         printf("Nhap diem %d: ", i + 1);
         scanf("%f", &diem[i]);
+        while(getchar() != '\n');
     }
 
     char temp[50];
     float doi = 0;
+    char sv[10];
     for(int i = 0; i < n; i++)
     {
         for(int j = 0; j < n; j++)
@@ -35,6 +45,10 @@ int main()
                 strcpy(temp, ten[i]);
                 strcpy(ten[i], ten[j]);
                 strcpy(ten[j], temp);
+
+                strcpy(sv, mssv[i]);
+                strcpy(mssv[i], mssv[j]);
+                strcpy(mssv[j], sv);
             }
         }
     }
@@ -69,12 +83,11 @@ int main()
         }
     }
 
-    printf(" %-5s | %-20s | %-6s | %-25s\n", "STT", "Tên", "Điểm", "Xếp loại");
+    printf(" %-5s | %-10s | %-25s | %-6s | %-25s\n", "STT", "MSSV", "Tên", "Điểm", "Xếp loại");
     printf("--------------------------------------------------------------\n");
     for(int i = 0; i < n; i++)
     {
-        printf(" %-5d | %-20s | %-6.2f | %-25s\n", i + 1, ten[i], diem[i], xl[i]);
-
+        printf(" %-5d | %-10s | %-25s | %-6.2f | %-25s \n", i + 1, mssv[i], ten[i], diem[i], xl[i]);
     }
 
     return 0;

@@ -25,7 +25,6 @@ int main()
         }
         else if( strcmp(username, ten) != 0 ){
             printf("Sai username.\n");
-           
         }
 
     }
