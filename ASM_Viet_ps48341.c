@@ -181,7 +181,7 @@ void laiXuatNganHang()
     printf("Tổng lãi: %72lld\n", tong_lai);
     printf("Tổng số tiền cần phải tra trong 12 tháng: %40lld", tong_tra);
 }
-int USCLN(int a, int b)
+int USCNN(int a, int b)
 {
     while(b != 0)
     {
@@ -193,7 +193,11 @@ int USCLN(int a, int b)
 }
 int BSCNN(int a, int b)
 {
-    return (a*b)/USCLN(a,b);
+    return (a*b)/USCNN(a,b);
+}
+int UCLN(int a, int b)
+{
+    return (a * b) / BSCNN(a,b);
 }
 int main()
 {
@@ -243,7 +247,7 @@ int main()
                 printf("Nhập giá trị của b: ");
                 scanf("%d", &b);
 
-                printf("Ước số chung lớn nhất của hai số là: %d\n", USCLN(a,b));
+                printf("Ước số chung lớn nhất của hai số là: %d\n", UCLN(a,b));
                 printf("Bội số chung nhỏ nhất của hai số là: %d\n", BSCNN(a,b));
                 printf("--------------------\n");
             break;
