@@ -153,19 +153,25 @@ void thongtinSV()
 }
 void laiXuatNganHang()
 {
+    int ky_han;
     long long tien_vay;
-    long long goc_thang = 1000000;
+
+    printf("Số tiền muốn vay là(VNĐ): ");
+    scanf("%lld", &tien_vay);
+    printf("Kỳ hạn(tháng): ");
+    scanf("%d", &ky_han);
+
     float lai = 0.05;
     long long du_no;
     long long tong_lai = 0;
     long long tong_tra = 0;
-    int ky_han = 12;
-
-    printf("Số tiền muốn vay là(VNĐ): ");
-    scanf("%lld", &tien_vay);
     du_no = tien_vay;
+    long long goc_thang = tien_vay / ky_han;
 
-    printf("Kỳ hạn  |  Lãi phải trả  |  Gốc phải trả  | Số tiền phải trả  |  Số tiền còn lại  |\n");
+    printf("\n%-6s | %-15s | %-15s | %-17s | %-15s\n",
+       "Thang", "Lai thang", "Goc thang", "Tong tra", "Du no");
+
+    printf("----------------------------------------------------------------------\n");
     for(int thang = 1; thang <= ky_han; thang++)
     {
         long long lai_thang = (long long int)(du_no * lai);
@@ -176,8 +182,11 @@ void laiXuatNganHang()
 
         du_no -= goc_thang;
 
-        printf("%4d    | %13lld     | %11lld     | %11lld     | %15lld       |\n", thang, lai_thang, goc_thang, tra_thang, du_no);   
+        printf("%-6d | %-15lld | %-15lld | %-17lld | %-15lld |\n", thang, lai_thang, goc_thang, tra_thang, du_no);
+
+        
     }
+
     printf("Tổng lãi: %72lld\n", tong_lai);
     printf("Tổng số tiền cần phải tra trong 12 tháng: %40lld", tong_tra);
 }
