@@ -270,7 +270,7 @@ int main()
             case 6:{
                 printf("\n--------------------\n");
                 printf("Thông tin sinh viên.\n");
-                
+
                 int n; 
                 printf("Số lượng sinh viên: ");
                 scanf("%d", &n);
@@ -304,6 +304,7 @@ int main()
                         printf("MaSV: |%s| Tên: |%s| Điểm: |%.2f| \n", SD21301[i].MaSV, SD21301[i].ten, SD21301[i].diem);
                     }
                 }
+                break;
             }
             break;
             case 7:
