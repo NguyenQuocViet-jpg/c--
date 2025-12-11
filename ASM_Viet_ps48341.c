@@ -71,15 +71,15 @@ void tinhTienDien()
     if(so_kwh <= 50)
     {
         printf("So tien can phai dong la: %fvnđ", so_kwh * 1.678);
-    }else if(so_kwh > 50 && so_kwh <= 100)
+    }else if(so_kwh <= 100)
     {
         printf("So tien can phai dong la: %fvnđ", so_kwh * 1.734);
-    }else if(so_kwh > 100 && so_kwh <= 200)
+    }else if(so_kwh <= 200)
     {
         printf("So tien can phai dong la: %fvnđ", so_kwh * 2.014);
-    }else if(so_kwh > 200 && so_kwh <= 300){
+    }else if(so_kwh <= 300){
         printf("So tien can phai dong la: %fvnđ", so_kwh * 2.536);
-    }else if(so_kwh > 300 && so_kwh <= 400)
+    }else if(so_kwh <= 400)
     {
         printf("So tien can phai dong la: %fvnđ", so_kwh * 2.834);
     }else if(so_kwh > 400)
@@ -204,7 +204,7 @@ int main()
     int chuc_nang;
     printf("CHÀO MỪNG ĐẾN VỚI ASSIGNMENT CỦA TÔI\n");
     do{
-        printf("\n+----------------------------------------------------------------+\n");
+        printf("\n+--------------------------------------------------------------+\n");
         printf("|     Chức năng 1: Kiểm tra số nguyên.                           |\n");
         printf("|     Chức năng 2: Tìm USC lớn nhất và BSC nhỏ nhất của 2 số.    |\n");
         printf("|     Chức năng 3: Tính tiền cho quán karaoke.                   |\n");
